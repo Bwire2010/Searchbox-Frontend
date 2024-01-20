@@ -1,0 +1,22 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.search-container {
+    text-align: center;
+    margin-top: 50px;
+}
+
+#searchInput {
+    padding: 8px;
+    margin-right: 8px;
+}
+
+#searchButton {
+    padding: 8px;
+    cursor: pointer;
+}
+
+#searchResults {
+    margin-top: 20px;
+}
