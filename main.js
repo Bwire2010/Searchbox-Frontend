@@ -8,9 +8,39 @@ document.addEventListener('DOMContentLoaded', function () {
     console.log('searchButton:', searchButton);
     console.log('searchResultsDropdown:', searchResultsDropdown);
 
-    searchButton.addEventListener('click', handleSearch);
+    let lastSubmissionTime = 0;
 
-    function handleSearch() {
+    searchButton.addEventListener('click', function () {
+        const currentTime = new Date().getTime();
+        const elapsedTime = currentTime - lastSubmissionTime;
+
+        if (elapsedTime >= 500) {
+            // If more than 500 milliseconds have passed, submit the search
+            handleSearch();
+            lastSubmissionTime = currentTime;
+        }
+        // Optionally, clear the search input here
+        searchInput.value = '';
+    });
+
+    const debouncedSearch = debounce(handleSearch, 500); // Adjust the delay as needed
+    searchInput.addEventListener('input', debouncedSearch);
+
+    let timeoutId;
+
+    function debounce(func, delay) {
+        return function () {
+            const context = this;
+            const args = arguments;
+
+            clearTimeout(timeoutId);
+            timeoutId = setTimeout(function () {
+                func.apply(context, args);
+            }, delay);
+        };
+    }
+
+    async function handleSearch() {
         const searchTerm = searchInput.value.trim();
 
         if (searchTerm.length === 0) {
@@ -23,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function () {
         loadingSpinner.style.display = 'block';
 
         // Make a request to the backend API
-        fetch(`https://searchbox-005p.onrender.com/searches?query=${encodeURIComponent(searchTerm)}`)
+        fetch(`http://127.0.0.1:3000/searches?query=${encodeURIComponent(searchTerm)}`)
             .then(response => response.json())
             .then(data => {
                 console.log('Received data:', data);
@@ -54,6 +84,3 @@ document.addEventListener('DOMContentLoaded', function () {
             });
     }
 });
-
-
-
