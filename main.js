@@ -10,7 +10,24 @@ document.addEventListener('DOMContentLoaded', function () {
 
     searchButton.addEventListener('click', handleSearch);
 
-    function handleSearch() {
+    const debouncedSearch = debounce(handleSearch, 300); // Adjust the delay as needed
+    searchInput.addEventListener('input', debouncedSearch);
+
+    let timeoutId;
+
+    function debounce(func, delay) {
+        return function () {
+            const context = this;
+            const args = arguments;
+
+            clearTimeout(timeoutId);
+            timeoutId = setTimeout(function () {
+                func.apply(context, args);
+            }, delay);
+        };
+    }
+
+    async function handleSearch() {
         const searchTerm = searchInput.value.trim();
 
         if (searchTerm.length === 0) {
