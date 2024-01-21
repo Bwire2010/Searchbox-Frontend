@@ -1,4 +1,4 @@
-# Searchbox Application
+** Searchbox Application **
 
 Welcome to the Searchbox application! This application utilizes Ruby on Rails for the backend (Ruby version 3.3.0, Rails version 7.0.8) and Vanilla JavaScript for the frontend.
 
