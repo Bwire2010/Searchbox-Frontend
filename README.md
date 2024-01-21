@@ -1,3 +1,5 @@
+# README
+
 ** Searchbox Application **
 
 Welcome to the Searchbox application! This application utilizes Ruby on Rails for the backend (Ruby version 3.3.0, Rails version 7.0.8) and Vanilla JavaScript for the frontend.
@@ -45,7 +47,31 @@ gem install rails -v 7.0.8
    rails db:migrate
    rails server
 
-Your backend will be accessible at http://localhost:3000.
+frontend github: 
 
-Open the frontend application by visiting https://bwire2010.github.io/Searchbox-Frontend/ in your browser.
+## 6. Usage Example
+
+The search engine is designed to capture complete searches and filter out incomplete ones. Here's an example:
+
+1. **User Searches (because it’s instant, it records it all):**
+
+   - (1st (random) user searches for)
+     - What is
+     - What is a
+     - What is a good car
+
+   - (2nd (random) user searches for:)
+     - How is
+     - How is emil hajric
+     - How is emil hajric doing
+
+2. **Your search engine only records:**
+   - What is a good car
+   - How is emil hajric doing
+
+And removes the rest because it was an incomplete search.
+
+
+Your backend will be accessible at http://127.0.0.1:3000/.
+
 Now you have the Searchbox application up and running locally. Feel free to explore and customize it according to your needs.

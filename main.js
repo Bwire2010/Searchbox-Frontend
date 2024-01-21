@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     searchButton.addEventListener('click', handleSearch);
 
-    const debouncedSearch = debounce(handleSearch, 300); // Adjust the delay as needed
+    const debouncedSearch = debounce(handleSearch, 700); // Adjust the delay as needed
     searchInput.addEventListener('input', debouncedSearch);
 
     let timeoutId;
