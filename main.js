@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function () {
         loadingSpinner.style.display = 'block';
 
         // Make a request to the backend API
-        fetch(`http://127.0.0.1:3000/searches?query=${encodeURIComponent(searchTerm)}`)
+        fetch(`https://searchbox-005p.onrender.com/searches?query=${encodeURIComponent(searchTerm)}`)
             .then(response => response.json())
             .then(data => {
                 console.log('Received data:', data);
@@ -84,3 +84,4 @@ document.addEventListener('DOMContentLoaded', function () {
             });
     }
 });
+
